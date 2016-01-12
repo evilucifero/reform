@@ -12,13 +12,15 @@ module.exports = {
     port: 3223
   },
   devtool: 'source-map',
-  entry: [
-    path.resolve(__dirname, 'src/js/app.js')
-  ],
+  entry: {
+    'admin/app': path.resolve(__dirname, 'src/js/admin/app.js'),
+    'form/app': path.resolve(__dirname, 'src/js/form/app.js'),
+    'create/app': path.resolve(__dirname, 'src/js/create/app.js'),
+  },
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module: {
     loaders: [
@@ -37,5 +39,17 @@ module.exports = {
         loader: 'style!css!sass',
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+          warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("production")
+      }
+    })
+  ]
 };

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>二维码</title>
+  <script src="//www.etuan.org/js/qrcode.min.js"></script>
+  <style>
+    body {
+      background-color: #333;
+    }
+    #qrcode {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -142px 0 0 -142px;
+      text-align: center;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div id="qrcode"></div>
+  <script>
+    function generateQr () {
+      var qr = qrcode(12, 'L');
+      var w = window.location;
+      qr.addData(w.origin + '/form.html' + w.search);
+      qr.make();
+      document.getElementById('qrcode').innerHTML = qr.createImgTag(4, 12);
+    }
+    generateQr();
+  </script>
+</body>
+</html>

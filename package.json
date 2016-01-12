@@ -4,8 +4,11 @@
   "description": "",
   "main": "src/js/app.js",
   "dependencies": {
+    "lodash": "^3.10.1",
+    "moment": "^2.11.1",
     "react": "~0.14.3",
     "react-dom": "~0.14.3",
+    "recharts": "^0.3.13",
     "webpack": "~1.12.9",
     "webpack-dev-server": "~1.14.0"
   },

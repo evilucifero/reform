@@ -5,15 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>表单系统</title>
   <style>
+    input {
+      width: 500px;
+      background: transparent;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      line-height: 40px;
+      color: white;
+      font-size: 32px;
+      font-family: "Lucida Console", Monaco, monospace;
+      padding-left: 6px;
+    }
     a:link, a:visited, a:hover, a:active {
       color: #ccc;
       text-decoration:none;
       display: block;
-      padding: 16px 32px;
+      padding: 16px;
       border: 2px solid #ccc;
       border-radius: 6px;
       box-sizing: border-box;
-      margin: 20px;
+      margin: 20px 210px;
+      width: 80px;
     }
     a:hover, a:active {
       color: #3cc;
@@ -27,7 +39,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      margin: -128px 0 0 -128px;
+      margin: -200px 0 0 -250px;
       text-align: center;
       color: #ccc;
     }
@@ -39,23 +51,25 @@
       line-height: 1;
       vertical-align: middle;
     }
-    @media (min-width: 768px){
-      #heading {margin: -256px 0 0 -256px;}
-      #title {font-size: 64px;}
-      #intro {font-size: 32px;}
-      a:link, a:visited, a:hover, a:active {display: inline-block;}
-    }
   </style>
 </head>
 <body>
   <article id="main">
     <div id="heading">
-      <h1 id="title">欢迎来到表单系统</h1>
+      <h1 id="title">请输入您的表单识别码<h1>
       <div id="intro">
-        <a href="create.html">新建表单</a>
-        <a href="login.html">打开表单</a>
+      <input type="text" id="id">
+      <a href="#" onclick="jump()">进入</a>
       </div>
     </div>
   </article>
+  <script>
+    var jump = function() {
+      var l = document.getElementById('id').value;
+      if (l.length === 24) {
+        window.location.href = window.location.origin + '/admin.html?id=' + l;
+      }
+    };
+  </script>
 </body>
 </html>
